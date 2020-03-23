@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:a1ExpressVol_1"
+             mc:Ignorable="d"
+             x:Class="a1ExpressVol_1.View.DashboardPage">
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="logo.png" Aspect="Fill" HeightRequest="100" VerticalOptions="StartAndExpand"/>
+
+
+            <Frame Grid.Row="2" HasShadow="True" HeightRequest="500" CornerRadius="10" Margin="0,-50,0,0" Padding="10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Opacity="0.9">
+                <Grid RowSpacing="30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Brandly, Murrel 04330424778" FontSize="Large" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Frame>
+                        <ListView ItemsSource="{Binding Products}"
+                                  HasUnevenRows="True"
+                                  Margin="40,80" ItemTapped="ListView_ItemTapped">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout>
+                                            <Label Text="{Binding Title}" Margin="10,10,10,10" HeightRequest="40" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" FontSize="Large" />
+                                            <Button Text="All The job will be binding"
+                                                    IsVisible="{Binding IsVisible}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            
+                        </ListView>
+                                  
+                            
+                    </Frame>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>
